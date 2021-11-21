@@ -77,7 +77,7 @@ def resnet_base(in_put, is_training, scope_name):
                                                 include_root_block=False,
                                                 scope=scope_name)
         
-    with slim.arg_scope(resnet_arg_scope(is_training=(False))):
+    with slim.arg_scope(resnet_arg_scope(is_training=(is_training))):
         C3, end_points_C3 = resnet_v1.resnet_v1(C2,
                                                 blocks[1:2],
                                                 global_pool=False,
