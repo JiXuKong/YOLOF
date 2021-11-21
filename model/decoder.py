@@ -59,21 +59,21 @@ class Decoder(object):
                                       kernel=3,
                                       is_training=self.is_training,
                                       scope='BboxPredConv')
-        # object_pred = conv2d(x_reg, self.num_anchors,
-        #                               kernel=3,
-        #                               is_training=self.is_training,
-        #                               scope='ObjectPredConv')
+        object_pred = conv2d(x_reg, self.num_anchors,
+                                      kernel=3,
+                                      is_training=self.is_training,
+                                      scope='ObjectPredConv')
         shape=tf.shape(cls_score)
         N, H, W = shape[0], shape[1], shape[2]
-        # cls_score = tf.reshape(cls_score, [N, -1, self.num_classes, H, W])
-        # objectness = tf.identity(object_pred)
-        # implicit objectness
-        # objectness = tf. reshape(objectness, [N, -1, 1, H, W])
-        # normalized_cls_score = cls_score + objectness - tf.log(
-        #     1. + tf.clip_by_value(tf.exp(objectness), -self.INF, self.INF) + tf.clip_by_value(
-        #         tf.exp(objectness), -self.INF, self.INF))
-        # normalized_cls_score = tf.reshape(normalized_cls_score, [N, -1, self.num_classes])
-        normalized_cls_score = tf.reshape(cls_score, [N, -1, self.num_classes])
+        cls_score = tf.reshape(cls_score, [N, -1, self.num_classes, H, W])
+        objectness = tf.identity(object_pred)
+        implicit objectness
+        objectness = tf. reshape(objectness, [N, -1, 1, H, W])
+        normalized_cls_score = cls_score + objectness - tf.log(
+            1. + tf.clip_by_value(tf.exp(objectness), -self.INF, self.INF) + tf.clip_by_value(
+                tf.exp(objectness), -self.INF, self.INF))
+        normalized_cls_score = tf.reshape(normalized_cls_score, [N, -1, self.num_classes])
+#         normalized_cls_score = tf.reshape(cls_score, [N, -1, self.num_classes])
         # print('normalized_cls_score', normalized_cls_score)
         
         return normalized_cls_score, bbox_pred, [[H,W]]
