@@ -37,7 +37,7 @@ class OneImgUniformMatcher(object):
         match_times(int): Number of positive anchors for each gt box.
 
     '''
-    def __init__(self, match_times,neg_ignor_th=0.7, pos_ignor_th=0.3):
+    def __init__(self, match_times,neg_ignor_th=0.7, pos_ignor_th=0.15):
         self.match_times = match_times
         self.pred_match_times = match_times
         self.neg_ignor_th = neg_ignor_th
@@ -124,6 +124,9 @@ class OneImgUniformMatcher(object):
         return reg_targets
     
     def show(self, p1,p2):
+        '''
+        This class is for debug, As we known, TF has a bad debug experience,using tf_func can print tensor's shape and value just like torch.
+        '''
         p1 += p1
         p1 = p1/2
         p2 += p2
