@@ -11,7 +11,7 @@ Tensorflow implement YOLOF(You Only Look One Level Feaature)
 
 ## Main difficulty 
   * GIOU did not converge! So I choosed Smooth L1 loss and this code support this two methods to regress boxes. If you find some Error about GIOU in my code or you can     find a way make it converge, Welcome to contact me!
-  * Larger resolution may reach a better results, but it decrese the inference result largely. 
+  * Larger resolution may reach a better results, but it decrese the inference speed largely. 
 
 ## Train/eval/demo 
  * If you want to train your own dataset, You can refer [FCOS]((https://github.com/JiXuKong/FCOS)) because they have similar code structure or you can contact me.  
