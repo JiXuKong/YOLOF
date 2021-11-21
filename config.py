@@ -56,7 +56,7 @@ phase = True
 base_anchor = [16]
 scale = np.array([2, 4, 8, 16, 32])
 # scale = np.array([1])
-aspect_ratio = np.array([0.5, 1.0, 2.0])
+aspect_ratio = np.array([1.0])
 anchors = scale.shape[0]*aspect_ratio.shape[0]
 momentum_rate = 0.9
 alpha = 0.25
@@ -67,7 +67,7 @@ decay = 0.99
 pi = 1e-2
 
 #yolof 
-LR = 0.12/64*batch_size/16#0.01/(16/batch_size)
+LR = 0.12/64*batch_size/8#0.01/(16/batch_size)
 DECAY_STEP = [train_num//batch_size*20, train_num//batch_size*27]
 score_threshold=0.05
 nms_iou_threshold=0.6
