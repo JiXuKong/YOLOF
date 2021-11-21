@@ -49,8 +49,7 @@ class YOLOF(object):
                     reg_num_convs=cfg.reg_num_convs,
                     prior_prob=cfg.pi,
                     is_training=self.is_training).forward(fpn_features)
-                # if cfg.giou_loss:
-                #     bbox_pred = reverse_normolize_box(bbox_pred)
+            
 
         all_anchors = tf.py_func(self._generate_anchor,
             inp=[feature_shape, self.base_anchor, self.scale, self.aspect_ratio],
@@ -79,13 +78,8 @@ class DetectHead(object):
         _cls_classes=[]
         _boxes=[]
         for batch in range(bbox_pred.get_shape().as_list()[0]):
-            # if not cfg.giou_loss:
             single_predbox = reverse_regress_target_tf(tf.reshape(bbox_pred[batch], [1, -1, 4]), anchor, [imgsize, imgsize])
-            # else:
-            #     single_predbox = reverse_normolize_box(tf.reshape(bbox_pred[batch], [1, -1, 4]), [imgsize, imgsize])
-            # single_predbox = tf.reshape(bbox_pred[batch], [1, -1, 4])
             single_score = tf.reshape(normalized_cls_score[batch], [1, -1, class_num])
-            # print('single_score', single_score)
             nms_box, nms_score, nms_label = gpu_nms(single_predbox, single_score, 
                 class_num, max_boxes=50, score_thresh=score_thresh, nms_thresh=nms_thresh)
             _cls_scores.append(nms_score)
