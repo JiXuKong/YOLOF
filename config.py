@@ -49,7 +49,7 @@ with open(test_img_txt, 'r') as f:
 test_num = len(image_index)
 # test_num = 341//batch_size
 class_num = len(classes)
-image_size = 640#currently only
+image_size = 800
 feature_size = [[image_size//(2**i), image_size//(2**i)] for i in range(3,8)]
 phase = True
 # base_anchor = [32, 64, 128]
@@ -67,7 +67,7 @@ decay = 0.99
 pi = 1e-2
 
 #yolof 
-LR = 0.12/64*batch_size/8#0.01/(16/batch_size)
+LR = 0.12/64*batch_size/10#0.01/(16/batch_size)
 DECAY_STEP = [train_num//batch_size*20, train_num//batch_size*27]
 score_threshold=0.05
 nms_iou_threshold=0.6
