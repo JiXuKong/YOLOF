@@ -7,7 +7,7 @@ Tensorflow implement YOLOF(You Only Look One Level Feaature)
   * Tensorflow pretrained resnet[model zoo](http://download.tensorflow.org/models/resnet_v1_50_2016_08_28.tar.gz )
   * Tensorboard visualize detection results When training. 
   * Best Result in Pascal VOC(0.66, train and test in VOC07).I guess in COCO will get a better performance? 
-  * I have to say this result is not so good as [RetinaNet](https://github.com/JiXuKong/RetinaNet) and [FCOS](https://github.com/JiXuKong/FCOS), but the author did not provide their result in VOC, So I have no conference to make this code perform better. If anyone has a better result,I'll appreciate it if you share your experience. 
+  * I have to say this result is not so good as [RetinaNet](https://github.com/JiXuKong/RetinaNet) and [FCOS](https://github.com/JiXuKong/FCOS), but the author did not provide their result in VOC, So I have no reference to make this code perform better. If anyone has a better result,I'll appreciate it if you share your experience. 
 
 ## Main difficulty 
   * GIOU did not converge! So I chose Smooth L1 loss and this code support this two methods to regress boxes. If you find some Error about GIOU in my code or you can     find a way make it converge, Welcome to contact me!
