@@ -67,7 +67,7 @@ class Decoder(object):
         N, H, W = shape[0], shape[1], shape[2]
         cls_score = tf.reshape(cls_score, [N, -1, self.num_classes, H, W])
         objectness = tf.identity(object_pred)
-        implicit objectness
+#         implicit objectness
         objectness = tf. reshape(objectness, [N, -1, 1, H, W])
         normalized_cls_score = cls_score + objectness - tf.log(
             1. + tf.clip_by_value(tf.exp(objectness), -self.INF, self.INF) + tf.clip_by_value(
